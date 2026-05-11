@@ -1,0 +1,34 @@
+name: SonarQube Flutter Analysis
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.2'
+          channel: 'stable'
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      # Generates the coverage/lcov.info file SonarQube needs
+      - name: Run Tests
+        run: flutter test --coverage
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v8
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
