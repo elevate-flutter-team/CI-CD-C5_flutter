@@ -1,0 +1,21 @@
+name: Code Linting Check Action
+
+on:
+  pull_request:
+    types: [ opened, closed , reopened,ready_for_review, synchronize ]
+
+jobs:
+  flutter_analyze:
+    name: Run flutter analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.2'
+          channel: 'stable'
+
+      - run: flutter pub get
+      - run: flutter pub run build_runner build
+      - run: flutter analyze
+
