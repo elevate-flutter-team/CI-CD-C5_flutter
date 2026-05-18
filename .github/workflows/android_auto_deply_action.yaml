@@ -1,6 +1,8 @@
 name: Deploy Flutter App to Firebase App Distribution (Android)
 
 on:
+  push:
+    branches: [release/*]
   pull_request:
     branches: [release/*]
 
