@@ -15,5 +15,5 @@ jobs:
                -d '{
                  "appId": "${{secrets.CODE_MAGIC_APP_ID}}",
                  "workflowId": "${{secrets.CODE_MAGIC_WORKFLOW_ID}}",
-                 "branch": "main"
+                 "branch": "release/v1"
                }'
