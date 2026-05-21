@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.elevate.ci_cd_c5_elevate"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.14033849"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

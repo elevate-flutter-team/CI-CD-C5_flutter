@@ -1,0 +1,19 @@
+name: Trigger Codemagic Build
+on:
+  push:
+    branches: [ release/* ]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Build via cURL
+        run: |
+          curl -X POST "https://codemagic.io" \
+               -H "Content-Type: application/json" \
+               -H "x-auth-token: ${{ secrets.CODEMAGIC_API_TOKEN }}" \
+               -d '{
+                 "appId": "${{secrets.CODE_MAGIC_APP_ID}}",
+                 "workflowId": "${{secrets.CODE_MAGIC_WORKFLOW_ID}}",
+                 "branch": "main"
+               }'

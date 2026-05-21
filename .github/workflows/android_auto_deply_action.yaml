@@ -33,3 +33,4 @@ jobs:
           serviceCredentialsFileContent: ${{secrets.SERVICE_ACCOUNT_KEY}}  # Firebase service account key for authentication
           groups: elevate_testers  # Distribution group(s) to receive the app
           file: build/app/outputs/apk/release/app-release.apk  # Path to the built APK file
+          release_notes: ${{ github.event.head_commit.message }}
