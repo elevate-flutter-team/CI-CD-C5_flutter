@@ -11,9 +11,9 @@ jobs:
         run: |
           curl -X POST "https://api.codemagic.io/builds" \
                -H "Content-Type: application/json" \
-               -H "x-auth-token: ${{ secrets.CODEMAGIC_API_TOKEN }}" \
+               -H "x-auth-token: hXigmyG1I7rMJ-74wbrGKqRv2SZazj0hRNMfoTX-oMk" \
                -d '{
-                 "appId": "${{secrets.CODE_MAGIC_APP_ID}}",
-                 "workflowId": "${{secrets.CODE_MAGIC_WORKFLOW_ID}}",
-                 "branch": "release/v1"
-               }'
+                    "appId": "6a0f3f534dc1d38dc6f7c868",
+                    "workflowId": "6a0f3f534dc1d38dc6f7c867",
+                    "branch": "release/v1"
+                  }'
